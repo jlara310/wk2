@@ -350,10 +350,10 @@
     $sql = "INSERT INTO users ";
     $sql .= "(first_name, last_name, email, username, created_at) ";
     $sql .= "VALUES (";
-    $sql .= "'" . $user['first_name'] . "',";
-    $sql .= "'" . $user['last_name'] . "',";
-    $sql .= "'" . $user['email'] . "',";
-    $sql .= "'" . $user['username'] . "',";
+    $sql .= "'" . db_escape($db, $user['first_name']) . "',";
+    $sql .= "'" . db_escape($db, $user['last_name']) . "',";
+    $sql .= "'" . db_escape($db, $user['email']) . "',";
+    $sql .= "'" . db_escape($db, $user['username']) . "',";
     $sql .= "'" . $created_at . "'";
     $sql .= ");";
     // For INSERT statments, $result is just true/false
