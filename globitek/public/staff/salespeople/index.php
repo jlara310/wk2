@@ -8,7 +8,7 @@
 
   <h1>Salespeople</h1>
 
-  <a href="#add_a_url">Add a Salesperson</a><br />
+  <a href="new.php">Add a Salesperson</a><br />
   <br />
 
   <?php
@@ -23,13 +23,13 @@
     echo "</tr>";
     while($salesperson = db_fetch_assoc($salespeople_result)) {
       echo "<tr>";
-      echo "<td>" . $salesperson['first_name'] . "</td>";
-      echo "<td>" . $salesperson['last_name'] . "</td>";
+      echo "<td>" . h($salesperson['first_name']) . "</td>";
+      echo "<td>" . h($salesperson['last_name']) . "</td>";
       echo "<td>";
-      echo "<a href=\"#add_a_url\">Show</a>";
+      echo "<a href=\"show.php?id=" . raw_u($salesperson['id']) . "\">Show</a>";
       echo "</td>";
       echo "<td>";
-      echo "<a href=\"#add_a_url\">Edit</a>";
+      echo "<a href=\"edit.php?id=" . raw_u($salesperson['id']) . "\">Edit</a>";
       echo "</td>";
       echo "</tr>";
     } // end while $salesperson
