@@ -304,7 +304,7 @@
   // Find user using id
   function find_user_by_id($id=0) {
     global $db;
-    $sql = "SELECT * FROM users WHERE id='" . $id . "' LIMIT 1;";
+    $sql = "SELECT * FROM users WHERE id='" . db_escape($db, $id) . "' LIMIT 1;";
     $users_result = db_query($db, $sql);
     return $users_result;
   }

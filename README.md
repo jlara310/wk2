@@ -6,11 +6,11 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-1\. [X]  Required: Import the Starting Database
+1\. [*]  Required: Import the Starting Database
 
-2\. [X]  Required: Set Up the Starting Code
+2\. [*]  Required: Set Up the Starting Code
 
-3\. [X]  Required: Review code for Staff CMS for Users
+3\. [*]  Required: Review code for Staff CMS for Users
 
 4\. [ ]  Required: Complete Staff CMS for Salespeople
   * [ ]  Required: index.php
