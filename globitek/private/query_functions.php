@@ -220,8 +220,31 @@
     return $salespeople_result;
   }
 
-  function validate_salesperson($salesperson, $errors=array()) {
-    // TODO add validations
+function validate_salesperson($salesperson, $errors=array()) {
+    if (is_blank($salesperson['first_name'])) {
+      $errors[] = "First name cannot be blank.";
+    } elseif (!has_length($salesperson['first_name'], array('min' => 2, 'max' => 255))) {
+      $errors[] = "First name must be between 2 and 255 characters.";
+    }
+
+    if (is_blank($salesperson['last_name'])) {
+      $errors[] = "Last name cannot be blank.";
+    } elseif (!has_length($salesperson['last_name'], array('min' => 2, 'max' => 255))) {
+      $errors[] = "Last name must be between 2 and 255 characters.";
+    }
+
+    if (is_blank($salesperson['phone'])) {
+      $errors[] = "Phone cannot be blank.";
+    } elseif (!has_length($salesperson['phone'], array('max' => 255))) {
+      $errors[] = "Phone must be less than 255 characters.";
+    }
+    
+    if (is_blank($salesperson['email'])) {
+      $errors[] = "E-mail cannot be blank.";
+    } elseif (!has_valid_email_format($salesperson['email'])) {
+      $errors[] = "E-mail must be a valid format.";
+    }
+
 
     return $errors;
   }
@@ -236,7 +259,14 @@
       return $errors;
     }
 
-    $sql = ""; // TODO add SQL
+    $sql = "INSERT INTO salespeople ";
+    $sql .= "(first_name, last_name, phone, email) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . db_escape($db, $salesperson['first_name']) . "',";
+    $sql .= "'" . db_escape($db, $salesperson['last_name']) . "',";
+    $sql .= "'" . db_escape($db, $salesperson['phone']) . "',";
+    $sql .= "'" . db_escape($db, $salesperson['email']) . "'";
+    $sql .= ");";
     // For INSERT statments, $result is just true/false
     $result = db_query($db, $sql);
     if($result) {
