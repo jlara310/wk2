@@ -205,7 +205,7 @@
     $sql = "SELECT * FROM salespeople ";
     $sql .= "LEFT JOIN salespeople_territories
               ON (salespeople_territories.salesperson_id = salespeople.id) ";
-    $sql .= "WHERE salespeople_territories.territory_id='" . $territory_id . "' ";
+    $sql .= "WHERE salespeople_territories.territory_id='" . $db_escape($db, $territory_id) . "' ";
     $sql .= "ORDER BY last_name ASC, first_name ASC;";
     $salespeople_result = db_query($db, $sql);
     return $salespeople_result;
@@ -290,7 +290,14 @@ function validate_salesperson($salesperson, $errors=array()) {
       return $errors;
     }
 
-    $sql = ""; // TODO add SQL
+    $sql = "UPDATE salespeople SET ";
+    $sql .= "first_name='" . db_escape($db, $salesperson['first_name']) . "', ";
+    $sql .= "last_name='" . db_escape($db, $salesperson['last_name']) . "', ";
+    $sql .= "email='" . db_escape($db, $salesperson['email']) . "', ";
+    $sql .= "phone='" . db_escape($db, $salesperson['phone']) . "' ";
+    $sql .= "WHERE id='" . db_escape($db, $salesperson['id']) . "' ";
+    $sql .= "LIMIT 1;";
+
     // For update_salesperson statments, $result is just true/false
     $result = db_query($db, $sql);
     if($result) {
