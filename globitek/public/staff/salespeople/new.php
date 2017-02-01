@@ -36,7 +36,7 @@ if(is_post_request()) {
 
   <h1>New Salesperson</h1>
 
-  <?php //echo display_errors($errors); ?>
+  <?php echo display_errors($errors); ?>
 
   <form action="new.php" method="post">
     First name:<br />

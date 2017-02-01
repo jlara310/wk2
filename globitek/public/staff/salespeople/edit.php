@@ -36,7 +36,7 @@ if(is_post_request()) {
 
   <h1>Edit Salesperson: <?php echo h($salesperson['first_name']) . " " . h($salesperson['last_name']); ?></h1>
 
-  <?php //echo display_errors($errors); ?>
+  <?php echo display_errors($errors); ?>
 
   <form action="edit.php?id=<?php echo raw_u($salesperson['id']); ?>" method="post">
     First name:<br />
