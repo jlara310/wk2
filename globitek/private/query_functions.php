@@ -39,7 +39,7 @@
   function find_state_by_id($id=0) {
     global $db;
     $sql = "SELECT * FROM states ";
-    $sql .= "WHERE id='" . $id . "';";
+    $sql .= "WHERE id='" . db_escape($db, $id) . "';";
     $state_result = db_query($db, $sql);
     return $state_result;
   }

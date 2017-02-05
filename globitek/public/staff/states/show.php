@@ -14,7 +14,7 @@ $state = db_fetch_assoc($state_result);
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="main-content">
-  <a href="#add_a_url">Back to States List</a><br />
+  <a href="index.php">Back to States List</a><br />
 
   <h1>State: <?php echo $state['name']; ?></h1>
 
@@ -22,20 +22,20 @@ $state = db_fetch_assoc($state_result);
     echo "<table id=\"state\">";
     echo "<tr>";
     echo "<td>Name: </td>";
-    echo "<td>" . $state['name'] . "</td>";
+    echo "<td>" . h($state['name']) . "</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td>Code: </td>";
-    echo "<td>" . $state['code'] . "</td>";
+    echo "<td>" . h($state['code']) . "</td>";
     echo "</tr>";
     echo "<tr>";
     echo "<td>Country ID: </td>";
-    echo "<td>" . $state['country_id'] . "</td>";
+    echo "<td>" . h($state['country_id']) . "</td>";
     echo "</tr>";
     echo "</table>";
 ?>
     <br />
-    <a href="#add_a_url">Edit</a><br />
+    <a href="edit.php?id=<?php echo raw_u($id); ?>">Edit</a><br />
     <hr />
 
     <h2>Territories</h2>
