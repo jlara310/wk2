@@ -103,7 +103,12 @@
       return $errors;
     }
 
-    $sql = ""; // TODO add SQL
+    $sql = "UPDATE states SET ";
+    $sql .= "name='" . db_escape($db, $state['name']) . "', ";
+    $sql .= "code='" . db_escape($db, $state['code']) . "', ";
+    $sql .= "country_id='" . db_escape($db, $state['country_id']) . "' ";
+    $sql .= "WHERE id='" . db_escape($db, $state['id']) . "' ";
+    $sql .= "LIMIT 1;";
     // For update_state statments, $result is just true/false
     $result = db_query($db, $sql);
     if($result) {
