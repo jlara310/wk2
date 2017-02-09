@@ -40,7 +40,7 @@ $state = db_fetch_assoc($state_result);
 
     <h2>Territories</h2>
     <br />
-    <a href="#add_a_url">Add a Territory</a><br />
+    <a href="../territories/new.php">Add a Territory</a><br />
 
 <?php
     $territory_result = find_territories_for_state_id($state['id']);
@@ -48,8 +48,8 @@ $state = db_fetch_assoc($state_result);
     echo "<ul id=\"territories\">";
     while($territory = db_fetch_assoc($territory_result)) {
       echo "<li>";
-      echo "<a href=\"#add_a_url\">";
-      echo $territory['name'];
+      echo "<a href=\"../territories/show.php?id=". raw_u($territory['id']) ."\">";
+      echo h($territory['name']);
       echo "</a>";
       echo "</li>";
     } // end while $territory
