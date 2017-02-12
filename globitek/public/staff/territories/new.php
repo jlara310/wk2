@@ -19,7 +19,9 @@ if(is_post_request()) {
 
   // Confirm that values are present before accessing them.
   if(isset($_POST['name'])) { $territory['name'] = $_POST['name']; }
+  if(isset($_GET['stateid'])) { $territory['state_id'] = $_GET['stateid']; }
   if(isset($_POST['position'])) { $territory['position'] = $_POST['position']; }
+
 
   $result = insert_territory($territory);
   if($result === true) {
@@ -28,6 +30,7 @@ if(is_post_request()) {
   } else {
     $errors = $result;
   }
+  
 }
 
 ?>
