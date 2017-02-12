@@ -6,29 +6,29 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-1\. [X]  Required: Import the Starting Database
+1\. [x]  Required: Import the Starting Database
 
-2\. [X]  Required: Set Up the Starting Code
+2\. [x]  Required: Set Up the Starting Code
 
-3\. [X]  Required: Review code for Staff CMS for Users
+3\. [x]  Required: Review code for Staff CMS for Users
 
-4\. [ ]  Required: Complete Staff CMS for Salespeople
-  * [ ]  Required: index.php
-  * [ ]  Required: show.php
-  * [ ]  Required: new.php
-  * [ ]  Required: edit.php
+4\. [x]  Required: Complete Staff CMS for Salespeople
+  * [x]  Required: index.php
+  * [x]  Required: show.php
+  * [x]  Required: new.php
+  * [x]  Required: edit.php
 
-5\. [ ]  Required: Complete Staff CMS for States
-  * [ ]  Required: index.php
-  * [ ]  Required: show.php
-  * [ ]  Required: new.php
-  * [ ]  Required: edit.php
+5\. [x]  Required: Complete Staff CMS for States
+  * [x]  Required: index.php
+  * [x]  Required: show.php
+  * [x]  Required: new.php
+  * [x]  Required: edit.php
 
-6\. [ ]  Required: Complete Staff CMS for Territories
-  * [ ]  Required: index.php
-  * [ ]  Required: show.php
-  * [ ]  Required: new.php
-  * [ ]  Required: edit.php
+6\. [x]  Required: Complete Staff CMS for Territories
+  * [x]  Required: index.php
+  * [x]  Required: show.php
+  * [x]  Required: new.php
+  * [x]  Required: edit.php
 
 7\. [ ]  Required: Add Data Validations
   * [ ]  Required: Validate that no values are left blank.
