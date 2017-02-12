@@ -191,7 +191,7 @@
     $sql .= "'" . db_escape($db, $territory['state_id']) . "',";
     $sql .= "'" . db_escape($db, $territory['position']) . "'";
     $sql .= ");";
-    
+
     // For INSERT statments, $result is just true/false
     $result = db_query($db, $sql);
     if($result) {
@@ -215,7 +215,13 @@
       return $errors;
     }
 
-    $sql = ""; // TODO add SQL
+    $sql = "UPDATE territories SET ";
+    $sql .= "name='" . db_escape($db, $territory['name']) . "', ";
+    $sql .= "position='" . db_escape($db, $territory['position']) . "', ";
+    $sql .= "state_id='" . db_escape($db, $territory['state_id']) . "' ";
+    $sql .= "WHERE id='" . db_escape($db, $territory['id']) . "' ";
+    $sql .= "LIMIT 1;";
+    
     // For update_territory statments, $result is just true/false
     $result = db_query($db, $sql);
     if($result) {
