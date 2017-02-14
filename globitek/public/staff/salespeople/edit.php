@@ -48,7 +48,7 @@ if(is_post_request()) {
     E-mail:<br />
     <input type="text" name="email" value="<?php echo h($salesperson['email']); ?>" /><br />
     <br />
-    <input type="submit" name="submit" value="Update"  />
+    <input type="submit" name="submit" value="Update"  /> <a href="show.php?id=<?php echo raw_u($salesperson['id']); ?>" >Cancel</a>
   </form>
 
 </div>

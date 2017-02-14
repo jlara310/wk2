@@ -49,7 +49,7 @@ if(is_post_request()) {
     <br />
     State ID: <?php echo h($territory['state_id']); ?><br />
     <br />
-    <input type="submit" name="submit" value="Edit"  />
+    <input type="submit" name="submit" value="Edit"  /> <a href="show.php?id=<?php echo raw_u($territory['id']); ?>" >Cancel</a>
   </form>
 
 </div>

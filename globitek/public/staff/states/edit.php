@@ -45,7 +45,7 @@ if(is_post_request()) {
     Country ID:<br />
     <input type="text" name="country_id" value="<?php echo h($state['country_id']); ?>" /><br />
     <br />
-    <input type="submit" name="submit" value="Update"  />
+    <input type="submit" name="submit" value="Update"  /> <a href="show.php?id=<?php echo raw_u($state['id']); ?>" >Cancel</a>
   </form>
 
 </div>
