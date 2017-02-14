@@ -426,7 +426,11 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "User Name cannot be blank.";
     } elseif (!has_length($user['username'], array('max' => 255))) {
       $errors[] = "User Name must be less than 255 characters.";
+    } elseif (!has_valid_characters($user['username'], "/\A[A-Za-z0-9\_']+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "User name can only include letters, numbers, and \"_\".";
     }
+
     return $errors;
   }
 

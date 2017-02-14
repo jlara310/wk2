@@ -26,4 +26,9 @@
     return strpos($value, '@') !== false;
   }
 
+  // has_valid_characters('string' , regex)
+  function has_valid_characters($value , $regex){
+    return (preg_match($regex, $value));
+  }
+
 ?>
