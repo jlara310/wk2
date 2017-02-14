@@ -292,7 +292,7 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "Phone must be less than 255 characters.";
     } elseif (!has_valid_characters($salesperson['phone'], "/\A[\s\-\(\)0-9\_']+\Z/")){
       //Validate for whitelisted characters using regex
-      $errors[] = "Phone can only include numbers, parentheses,spaces, and dashes.";
+      $errors[] = "Phone can only include numbers, parenthesfes, spaces, and dashes.";
     }
     
     if (is_blank($salesperson['email'])) {
@@ -301,7 +301,11 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "E-mail must be a valid format.";
     } elseif (!has_length($salesperson['email'], array('min' => 2, 'max' => 255))) {
       $errors[] = "E-mail must be between 2 and 255 characters.";
+    } elseif (!has_valid_characters($salesperson['email'], "/\A[A-Za-z0-9\@\.\_\-]+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "E-mail can only include letters, numbers, and the symbols \"@._-\".";
     }
+
 
 
     return $errors;
@@ -423,6 +427,9 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "Email must be a valid format.";
     } elseif (!has_length($user['email'], array('min' => 2, 'max' => 255))) {
       $errors[] = "Email must be between 2 and 255 characters.";
+    } elseif (!has_valid_characters($user['email'], "/\A[A-Za-z0-9\@\.\_\-]+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "E-mail can only include letters, numbers, and the symbols \"@._-\".";
     }
 
     if (is_blank($user['username'])) {
