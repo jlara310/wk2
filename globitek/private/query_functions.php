@@ -47,13 +47,15 @@
   function validate_state($state, $errors=array()) {
     if (is_blank($state['name'])) {
       $errors[] = "State name cannot be blank.";
-    } elseif (!has_length($state['name'], array('min' => 2, 'max' => 255))) {
-      $errors[] = "State name must be between 2 and 255 characters.";
+    } elseif (!has_length($state['name'], array( 'max' => 255))) {
+      $errors[] = "State name must be less than 255 characters.";
     }
 
     if (is_blank($state['code'])) {
       $errors[] = "Code cannot be blank.";
-    } 
+    } elseif (!has_length($state['code'], array( 'max' => 255))) {
+      $errors[] = "State Code must be between less than 255 characters.";
+    }
 
     if (is_blank($state['country_id'])) {
       $errors[] = "Country ID cannot be blank.";
@@ -294,6 +296,8 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "E-mail cannot be blank.";
     } elseif (!has_valid_email_format($salesperson['email'])) {
       $errors[] = "E-mail must be a valid format.";
+    } elseif (!has_length($salesperson['email'], array('min' => 2, 'max' => 255))) {
+      $errors[] = "E-mail must be between 2 and 255 characters.";
     }
 
 
@@ -414,12 +418,14 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "Email cannot be blank.";
     } elseif (!has_valid_email_format($user['email'])) {
       $errors[] = "Email must be a valid format.";
+    } elseif (!has_length($user['email'], array('min' => 2, 'max' => 255))) {
+      $errors[] = "Email must be between 2 and 255 characters.";
     }
 
     if (is_blank($user['username'])) {
-      $errors[] = "Username cannot be blank.";
+      $errors[] = "User Name cannot be blank.";
     } elseif (!has_length($user['username'], array('max' => 255))) {
-      $errors[] = "Username must be less than 255 characters.";
+      $errors[] = "User Name must be less than 255 characters.";
     }
     return $errors;
   }
