@@ -290,6 +290,9 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "Phone cannot be blank.";
     } elseif (!has_length($salesperson['phone'], array('max' => 255))) {
       $errors[] = "Phone must be less than 255 characters.";
+    } elseif (!has_valid_characters($salesperson['phone'], "/\A[\s\-\(\)0-9\_']+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "Phone can only include numbers, parentheses,spaces, and dashes.";
     }
     
     if (is_blank($salesperson['email'])) {
