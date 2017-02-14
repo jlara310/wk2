@@ -256,7 +256,7 @@
     $sql = "SELECT * FROM salespeople ";
     $sql .= "LEFT JOIN salespeople_territories
               ON (salespeople_territories.salesperson_id = salespeople.id) ";
-    $sql .= "WHERE salespeople_territories.territory_id='" . $db_escape($db, $territory_id) . "' ";
+    $sql .= "WHERE salespeople_territories.territory_id='" . db_escape($db, $territory_id) . "' ";
     $sql .= "ORDER BY last_name ASC, first_name ASC;";
     $salespeople_result = db_query($db, $sql);
     return $salespeople_result;
