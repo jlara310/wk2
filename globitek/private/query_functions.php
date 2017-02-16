@@ -285,6 +285,7 @@ function validate_salesperson($salesperson, $errors=array()) {
     } elseif (!has_length($salesperson['first_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "First name must be between 2 and 255 characters.";
     } elseif (!has_valid_characters($salesperson['first_name'], "/\A[A-Za-z\-]+\Z/")){
+      //My custom validation
       //Validate for whitelisted characters using regex
       $errors[] = "First name can only include letters and hyphens.";
     }
@@ -294,6 +295,7 @@ function validate_salesperson($salesperson, $errors=array()) {
     } elseif (!has_length($salesperson['last_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "Last name must be between 2 and 255 characters.";
     } elseif (!has_valid_characters($salesperson['last_name'], "/\A[A-Za-z\-]+\Z/")){
+      //My custom validation
       //Validate for whitelisted characters using regex
       $errors[] = "Last name can only include letters and hyphens.";
     }
@@ -303,6 +305,7 @@ function validate_salesperson($salesperson, $errors=array()) {
     } elseif (!has_length($salesperson['phone'], array('max' => 255))) {
       $errors[] = "Phone must be less than 255 characters.";
     } elseif (!has_valid_characters($salesperson['phone'], "/\A[\s\-\(\)0-9\_']+\Z/")){
+      //My custom validation
       //Validate for whitelisted characters using regex
       $errors[] = "Phone can only include numbers, parentheses, spaces, and dashes.";
     }
@@ -428,6 +431,7 @@ function validate_salesperson($salesperson, $errors=array()) {
     } elseif (!has_length($user['first_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "First name must be between 2 and 255 characters.";
     } elseif (!has_valid_characters($user['first_name'], "/\A[A-Za-z\-]+\Z/")){
+      //My custom validation
       //Validate for whitelisted characters using regex
       $errors[] = "First name can only include letters and hyphens.";
     }
@@ -437,6 +441,7 @@ function validate_salesperson($salesperson, $errors=array()) {
     } elseif (!has_length($user['last_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "Last name must be between 2 and 255 characters.";
     } elseif (!has_valid_characters($user['last_name'], "/\A[A-Za-z\-]+\Z/")){
+      //My custom validation
       //Validate for whitelisted characters using regex
       $errors[] = "Last name can only include letters and hyphens.";
     }
