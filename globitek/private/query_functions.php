@@ -59,7 +59,10 @@
 
     if (is_blank($state['country_id'])) {
       $errors[] = "Country ID cannot be blank.";
-    } 
+    } elseif ( !is_numeric($state['country_id']) ){
+      //My custom validation
+      $errors[] = "Country ID must be a number.";
+    }
     
     return $errors;
   }
@@ -171,7 +174,10 @@
 
     if (is_blank($territory['position'])) {
       $errors[] = "Position cannot be blank.";
-    } 
+    } elseif ( !is_numeric($territory['position'] )){
+      //My custom validation
+      $errors[] = "Position must be a number.";
+    }
     
     return $errors;
   }
@@ -278,12 +284,18 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "First name cannot be blank.";
     } elseif (!has_length($salesperson['first_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "First name must be between 2 and 255 characters.";
+    } elseif (!has_valid_characters($salesperson['first_name'], "/\A[A-Za-z\-]+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "First name can only include letters and hyphens.";
     }
 
     if (is_blank($salesperson['last_name'])) {
       $errors[] = "Last name cannot be blank.";
     } elseif (!has_length($salesperson['last_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "Last name must be between 2 and 255 characters.";
+    } elseif (!has_valid_characters($salesperson['last_name'], "/\A[A-Za-z\-]+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "Last name can only include letters and hyphens.";
     }
 
     if (is_blank($salesperson['phone'])) {
@@ -292,7 +304,7 @@ function validate_salesperson($salesperson, $errors=array()) {
       $errors[] = "Phone must be less than 255 characters.";
     } elseif (!has_valid_characters($salesperson['phone'], "/\A[\s\-\(\)0-9\_']+\Z/")){
       //Validate for whitelisted characters using regex
-      $errors[] = "Phone can only include numbers, parenthesfes, spaces, and dashes.";
+      $errors[] = "Phone can only include numbers, parentheses, spaces, and dashes.";
     }
     
     if (is_blank($salesperson['email'])) {
@@ -409,16 +421,24 @@ function validate_salesperson($salesperson, $errors=array()) {
   }
 
   function validate_user($user, $errors=array()) {
+    global $db;
+
     if (is_blank($user['first_name'])) {
       $errors[] = "First name cannot be blank.";
     } elseif (!has_length($user['first_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "First name must be between 2 and 255 characters.";
+    } elseif (!has_valid_characters($user['first_name'], "/\A[A-Za-z\-]+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "First name can only include letters and hyphens.";
     }
 
     if (is_blank($user['last_name'])) {
       $errors[] = "Last name cannot be blank.";
     } elseif (!has_length($user['last_name'], array('min' => 2, 'max' => 255))) {
       $errors[] = "Last name must be between 2 and 255 characters.";
+    } elseif (!has_valid_characters($user['last_name'], "/\A[A-Za-z\-]+\Z/")){
+      //Validate for whitelisted characters using regex
+      $errors[] = "Last name can only include letters and hyphens.";
     }
 
     if (is_blank($user['email'])) {
@@ -450,6 +470,21 @@ function validate_salesperson($salesperson, $errors=array()) {
     global $db;
 
     $errors = validate_user($user);
+
+      //My custom validation      
+      //Validate uniqueness of user name
+      $username = db_escape($db, $user['username']);
+      // Write SQL query statement
+      $query = "SELECT * ";
+      $query .= "FROM users ";
+      $query .= "WHERE username = '{$username}';";
+
+      $uniqueness_result = mysqli_query($db, $query);
+
+      if ($uniqueness_result->num_rows != 0) {
+        $errors[] = "That user name is already taken.";
+      }
+
     if (!empty($errors)) {
       return $errors;
     }
@@ -483,6 +518,29 @@ function validate_salesperson($salesperson, $errors=array()) {
     global $db;
 
     $errors = validate_user($user);
+    
+    //My custom validation
+    //If user attempts to change username, check uniqueness
+    $unchanged_user_result = find_user_by_id($user['id']);
+    // No loop, only one result
+    $unchanged_user = db_fetch_assoc($unchanged_user_result);
+
+    if($unchanged_user['username'] != $user['username']){
+      //Validate uniqueness of user name
+      $username = db_escape($db, $user['username']);
+      // Write SQL query statement
+      $query = "SELECT * ";
+      $query .= "FROM users ";
+      $query .= "WHERE username = '{$username}';";
+
+      $uniqueness_result = mysqli_query($db, $query);
+
+      if ($uniqueness_result->num_rows != 0) {
+        $errors[] = "That user name is already taken.";
+      }
+    }
+
+
     if (!empty($errors)) {
       return $errors;
     }
