@@ -11,7 +11,7 @@ $territory = db_fetch_assoc($territory_result);
 $state_id = $territory['state_id'];
 ?>
 
-<?php $page_title = 'Staff: Territory of ' . $territory['name']; ?>
+<?php $page_title = 'Staff: Territory of ' . h($territory['name']); ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="main-content">

@@ -490,6 +490,8 @@ function validate_salesperson($salesperson, $errors=array()) {
         $errors[] = "That user name is already taken.";
       }
 
+    db_free_result($uniqueness_result);
+
     if (!empty($errors)) {
       return $errors;
     }
@@ -543,6 +545,8 @@ function validate_salesperson($salesperson, $errors=array()) {
       if ($uniqueness_result->num_rows != 0) {
         $errors[] = "That user name is already taken.";
       }
+
+      db_free_result($uniqueness_result);
     }
 
 

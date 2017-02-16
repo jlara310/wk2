@@ -36,13 +36,13 @@ The following **required** functionality is completed:
   * [x]  Required: Validate that usernames contain only the whitelisted characters.
   * [x]  Required: Validate that phone numbers contain only the whitelisted characters.
   * [x]  Required: Validate that email addresses contain only whitelisted characters.
-  * [ ]  Required: Add *at least 5* other validations of your choosing.
+  * [x]  Required: Add *at least 5* other validations of your choosing.
 
-8\. [ ]  Required: Sanitization
-  * [ ]  Required: All input and dynamic output should be sanitized.
-  * [ ]  Required: Sanitize dynamic data for URLs
-  * [ ]  Required: Sanitize dynamic data for HTML
-  * [ ]  Required: Sanitize dynamic data for SQL
+8\. [x]  Required: Sanitization
+  * [x]  Required: All input and dynamic output should be sanitized.
+  * [x]  Required: Sanitize dynamic data for URLs
+  * [x]  Required: Sanitize dynamic data for HTML
+  * [x]  Required: Sanitize dynamic data for SQL
 
 9\. [ ]  Required: Penetration Testing
   * [ ]  Required: Verify form inputs are not vulnerable to SQLI attacks.

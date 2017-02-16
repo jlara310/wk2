@@ -33,7 +33,7 @@ if(is_post_request()) {
 <div id="main-content">
   <a href="index.php">Back to States List</a><br />
 
-  <h1>Edit State: <?php echo $state['name']; ?></h1>
+  <h1>Edit State: <?php echo h($state['name']); ?></h1>
 
   <?php echo display_errors($errors); ?>
 

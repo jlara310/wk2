@@ -10,13 +10,13 @@ $state_result = find_state_by_id($id);
 $state = db_fetch_assoc($state_result);
 ?>
 
-<?php $page_title = 'Staff: State of ' . $state['name']; ?>
+<?php $page_title = 'Staff: State of ' . h($state['name']); ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="main-content">
   <a href="index.php">Back to States List</a><br />
 
-  <h1>State: <?php echo $state['name']; ?></h1>
+  <h1>State: <?php echo h($state['name']); ?></h1>
 
   <?php
     echo "<table id=\"state\">";

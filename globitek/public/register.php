@@ -50,11 +50,11 @@
       $sql .= "VALUES (";
       // Note that there is no SQL sanitization used here yet.
       // That will be a topic for later in the week.
-      $sql .= "'" . $first_name . "',";
-      $sql .= "'" . $last_name . "',";
-      $sql .= "'" . $email . "',";
-      $sql .= "'" . $username . "',";
-      $sql .= "'" . $created_at . "'";
+      $sql .= "'" . db_escape($db, $first_name) . "',";
+      $sql .= "'" . db_escape($db, $last_name) . "',";
+      $sql .= "'" . db_escape($db, $email) . "',";
+      $sql .= "'" . db_escape($db, $username) . "',";
+      $sql .= "'" . db_escape($db, $created_at) . "'";
       $sql .= ")";
 
       // For INSERT statments, $result is just true/false
